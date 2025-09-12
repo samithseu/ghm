@@ -13,11 +13,11 @@ const username = defineModel<string>("modelValue");
 
 <template>
   <form
-    class="w-full flex gap-2"
+    class="w-full flex *:border *:border-gray-300 *:dark:border-gray-900"
     @submit.prevent="() => navigateTo(`/${username}`)"
   >
     <input
-      class="w-full px-2 py-1 border border-gray-300 rounded-md dark:border-white/10"
+      class="w-full px-2 py-1"
       pattern="^[\w\-\d]+$"
       :placeholder="props.placeholder"
       type="text"
@@ -25,7 +25,7 @@ const username = defineModel<string>("modelValue");
       v-model="username"
     />
     <button
-      class="cursor-pointer px-2 py-1 border border-gray-300 rounded-md dark:border-white/10"
+      class="cursor-pointer transition-colors hover:bg-primary/20 dark:hover:bg-primary/10 px-2 py-1 -ms-[1px]"
     >
       Search
     </button>

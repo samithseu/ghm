@@ -25,7 +25,7 @@ const handleCopy = () => {
       <Icon name="svg-spinners:270-ring-with-bg" />
     </h1>
     <SimpleForm placeholder="loading..." />
-    <SimpleAutoScrollText classes="border border-gray-500 "
+    <SimpleAutoScrollText classes="border border-gray-300 dark:border-gray-900"
       >Loading...</SimpleAutoScrollText
     >
   </SimpleWrapper>
@@ -36,8 +36,7 @@ const handleCopy = () => {
       GitHub-Email for "{{ username }}"
     </h1>
     <SimpleForm :placeholder="username?.toString()" />
-    <SimpleAutoScrollText
-      classes="border border-red-500 bg-red-500/20 cursor-not-allowed"
+    <SimpleAutoScrollText classes="border border-red-500 cursor-not-allowed"
       >{{ error?.statusCode }} -
       {{ error?.statusMessage }}</SimpleAutoScrollText
     >
@@ -62,7 +61,7 @@ const handleCopy = () => {
         <img :src="data?.avatar_url" class="aspect-square w-9 rounded-full" />
       </NuxtLink>
       <SimpleAutoScrollText
-        classes="w-full border bg-primary/20 border-primary"
+        classes="w-full border border-gray-300 dark:border-gray-900"
         :copy-callback="handleCopy"
         >{{ data?.email }}</SimpleAutoScrollText
       >
