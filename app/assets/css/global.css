@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark-mode *));
+
+:root {
+  @apply scroll-width-thin;
+  &:is(.dark-mode) {
+    color-scheme: dark;
+  }
+  &:is(.light-mode) {
+    color-scheme: light;
+  }
+}
+@utility scroll-gutter-stable {
+  scrollbar-gutter: stable;
+}
+@utility scroll-width-thin {
+  scrollbar-width: thin;
+}
+@utility no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+}
+
+@theme inline {
+  --color-primary: #15d0ff;
+  --default-font-family: "Inter", sans-serif;
+  --default-mono-font-family: "Geist Mono", monospace;
+}
