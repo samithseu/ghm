@@ -2,6 +2,9 @@
 
 @custom-variant dark (&:is(.dark-mode *));
 
+::selection {
+  @apply bg-primary/40 text-current;
+}
 :root {
   @apply scroll-width-thin;
   &:is(.dark-mode) {
