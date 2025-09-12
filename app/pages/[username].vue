@@ -61,7 +61,11 @@ const handleCopy = () => {
         :to="`https://github.com/${data?.username}`"
         external
       >
-        <img :src="data?.avatar_url" class="aspect-square w-9 rounded-full" />
+        <img
+          :src="data?.avatar_url"
+          :alt="`GitHub profile for ${data?.username}`"
+          class="aspect-square w-9 rounded-full"
+        />
       </NuxtLink>
 
       <!-- email -->

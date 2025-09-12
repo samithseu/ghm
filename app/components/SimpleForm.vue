@@ -13,7 +13,7 @@ const username = defineModel<string>("modelValue");
 
 <template>
   <form
-    class="w-full flex *:border *:border-zinc-300 *:dark:border-zinc-800"
+    class="font-mono w-full flex *:border *:border-zinc-300 *:dark:border-zinc-800"
     @submit.prevent="() => navigateTo(`/${username}`)"
   >
     <input

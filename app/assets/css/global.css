@@ -5,6 +5,9 @@
 ::selection {
   @apply bg-primary/40 text-current;
 }
+*:focus {
+  @apply outline-2 outline-primary/50;
+}
 :root {
   @apply scroll-width-thin;
   &:is(.dark-mode) {
@@ -14,9 +17,7 @@
     color-scheme: light;
   }
 }
-@utility scroll-gutter-stable {
-  scrollbar-gutter: stable;
-}
+
 @utility scroll-width-thin {
   scrollbar-width: thin;
 }
