@@ -21,11 +21,10 @@ const handleCopy = () => {
   <!-- loading skeleton -->
   <SimpleWrapper v-if="pending">
     <h1 class="text-wrap text-center text-xl font-bold">
-      <!-- Finding email... -->
       <Icon name="svg-spinners:270-ring-with-bg" />
     </h1>
     <SimpleForm placeholder="loading..." />
-    <SimpleAutoScrollText classes="border border-gray-300 dark:border-gray-900"
+    <SimpleAutoScrollText classes="border border-zinc-300 dark:border-zinc-800"
       >Loading...</SimpleAutoScrollText
     >
   </SimpleWrapper>
@@ -33,7 +32,7 @@ const handleCopy = () => {
   <!-- error -->
   <SimpleWrapper v-else-if="error">
     <h1 class="text-wrap text-center text-xl font-bold">
-      GitHub-Email for "{{ username }}"
+      GitHub-Mail for "{{ username }}"
     </h1>
     <SimpleForm :placeholder="username?.toString()" />
     <SimpleAutoScrollText classes="border border-red-500 cursor-not-allowed"
@@ -45,23 +44,29 @@ const handleCopy = () => {
   <!-- success - email -->
   <SimpleWrapper v-else>
     <h1 class="text-wrap text-center text-xl font-bold">
-      GitHub-Email for
+      GitHub-Mail for
       <span class="text-cyan-600 dark:text-primary">"{{ username }}"</span>
     </h1>
     <SimpleForm :placeholder="username?.toString()" />
-    <small class="text-center text-gray-500 dark:text-white/40"
-      >click on email to copy!</small
-    >
+    <small
+      class="text-center text-gray-500 dark:text-white/40 md:flex md:items-center md:justify-center md:gap-1"
+      >click on email to copy
+      <Icon class="!h-[10px] md:!size-[14px]" name="lucide:copy"
+    /></small>
     <div class="flex gap-2 items-center">
+      <!-- github profile image-->
       <NuxtLink
         target="_blank"
+        :title="`GitHub profile for ${data?.username}`"
         :to="`https://github.com/${data?.username}`"
         external
       >
         <img :src="data?.avatar_url" class="aspect-square w-9 rounded-full" />
       </NuxtLink>
+
+      <!-- email -->
       <SimpleAutoScrollText
-        classes="w-full border border-gray-300 dark:border-gray-900"
+        classes="w-full border border-zinc-300 dark:border-zinc-800"
         :copy-callback="handleCopy"
         >{{ data?.email }}</SimpleAutoScrollText
       >
