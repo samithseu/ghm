@@ -2,9 +2,11 @@
 const props = withDefaults(
   defineProps<{
     placeholder?: string;
+    autofocus?: boolean;
   }>(),
   {
     placeholder: "Enter username...",
+    autofocus: false,
   }
 );
 
@@ -17,6 +19,7 @@ const username = defineModel<string>("modelValue");
     @submit.prevent="() => navigateTo(`/${username}`)"
   >
     <input
+      :autofocus="props.autofocus"
       class="w-full px-3 py-1.5"
       pattern="^[\w\-\d]+$"
       :placeholder="props.placeholder"
