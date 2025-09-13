@@ -32,7 +32,7 @@ const handleCopy = () => {
   <!-- error -->
   <SimpleWrapper v-else-if="error">
     <h1 class="text-wrap text-center text-xl font-bold">
-      GitHub Mail for "{{ username }}"
+      GitHub Mail for "{{ data?.username }}"
     </h1>
     <SimpleForm :placeholder="username?.toString()" />
     <SimpleAutoScrollText classes="border border-red-500 cursor-not-allowed"
@@ -45,7 +45,9 @@ const handleCopy = () => {
   <SimpleWrapper v-else>
     <h1 class="text-wrap text-center text-xl font-bold">
       GitHub Mail for
-      <span class="text-cyan-600 dark:text-primary">"{{ username }}"</span>
+      <span class="text-cyan-600 dark:text-primary"
+        >"{{ data?.username }}"</span
+      >
     </h1>
     <SimpleForm :placeholder="username?.toString()" />
     <ClickToCopy />
@@ -53,20 +55,20 @@ const handleCopy = () => {
       <!-- github profile image-->
       <NuxtLink
         target="_blank"
-        :title="`GitHub profile for ${data?.username}`"
+        :title="`&quot;${data?.username}&quot; GitHub`"
         :to="`https://github.com/${data?.username}`"
         external
       >
         <img
           :src="data?.avatar_url"
-          :alt="`GitHub profile for ${data?.username}`"
+          :alt="`&quot;${data?.username}&quot; GitHub`"
           class="aspect-square min-w-9 max-w-9 rounded-full"
         />
       </NuxtLink>
 
       <!-- email -->
       <SimpleAutoScrollText
-        classes="w-full border border-zinc-300 dark:border-zinc-800"
+        classes="border border-zinc-300 dark:border-zinc-800 overflow-mask"
         :copy-callback="handleCopy"
         >{{ data?.email }}</SimpleAutoScrollText
       >

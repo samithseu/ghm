@@ -30,7 +30,7 @@
 }
 
 .overflow-mask {
-  @apply [mask-image:linear-gradient(to_right,transparent,black_3rem,black_calc(100%_-_3rem),transparent)];
+  @apply [mask-image:linear-gradient(to_right,black_3rem,black_calc(100%_-_3rem),transparent)];
 }
 
 @theme inline {
