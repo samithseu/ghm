@@ -18,6 +18,7 @@
   }
 }
 
+/* custom styles & utilities */
 @utility scroll-width-thin {
   scrollbar-width: thin;
 }
@@ -28,8 +29,13 @@
   scrollbar-width: none;
 }
 
+.overflow-mask {
+  @apply [mask-image:linear-gradient(to_right,transparent,black_3rem,black_calc(100%_-_3rem),transparent)];
+}
+
 @theme inline {
   --color-primary: #15d0ff;
+  --color-dark: #0a0a0a;
   --default-font-family: "Inter", sans-serif;
   --default-mono-font-family: "Geist Mono", monospace;
 }
