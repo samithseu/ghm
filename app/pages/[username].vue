@@ -21,7 +21,7 @@ const handleCopy = () => {
   <!-- loading skeleton -->
   <SimpleWrapper v-if="pending">
     <h1 class="text-wrap text-center text-xl font-bold">
-      <Icon name="svg-spinners:270-ring-with-bg" />
+      <SimpleLoading class="text-2xl mx-auto animate-spin text-zinc-500" />
     </h1>
     <SimpleForm placeholder="loading..." />
     <SimpleAutoScrollText classes="border border-zinc-300 dark:border-zinc-800"
@@ -64,7 +64,7 @@ const handleCopy = () => {
         <img
           :src="data?.avatar_url"
           :alt="`GitHub profile for ${data?.username}`"
-          class="aspect-square w-9 rounded-full"
+          class="aspect-square min-w-9 max-w-9 rounded-full"
         />
       </NuxtLink>
 
