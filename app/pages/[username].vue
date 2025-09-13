@@ -48,11 +48,7 @@ const handleCopy = () => {
       <span class="text-cyan-600 dark:text-primary">"{{ username }}"</span>
     </h1>
     <SimpleForm :placeholder="username?.toString()" />
-    <small
-      class="text-center text-gray-500 dark:text-white/40 md:flex md:items-center md:justify-center md:gap-1"
-      >click on email to copy
-      <Icon class="!h-[10px] md:!size-[14px]" name="lucide:copy"
-    /></small>
+    <ClickToCopy />
     <div class="flex gap-2 items-center">
       <!-- github profile image-->
       <NuxtLink
