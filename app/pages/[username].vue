@@ -32,12 +32,12 @@ const handleCopy = () => {
   <!-- error -->
   <SimpleWrapper v-else-if="error">
     <h1 class="text-wrap text-center text-xl font-bold">
-      GitHub Mail for "{{ data?.username }}"
+      GitHub Mail for "{{ username }}"
     </h1>
     <SimpleForm :placeholder="username?.toString()" />
     <SimpleAutoScrollText classes="border border-red-500 cursor-not-allowed"
       >{{ error?.statusCode }} -
-      {{ error?.statusMessage }}</SimpleAutoScrollText
+      {{ error?.statusMessage ?? error?.message }}</SimpleAutoScrollText
     >
   </SimpleWrapper>
 
@@ -45,9 +45,7 @@ const handleCopy = () => {
   <SimpleWrapper v-else>
     <h1 class="text-wrap text-center text-xl font-bold">
       GitHub Mail for
-      <span class="text-cyan-600 dark:text-primary"
-        >"{{ data?.username }}"</span
-      >
+      <span class="text-cyan-600 dark:text-primary">"{{ username }}"</span>
     </h1>
     <SimpleForm :placeholder="username?.toString()" />
     <ClickToCopy />
