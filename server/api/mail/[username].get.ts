@@ -42,6 +42,10 @@ export default defineEventHandler(async (event) => {
       updated_at: res.updated_at,
     } satisfies User;
   } catch (error: FetchError | any) {
-    throw createError(error);
+    throw createError({
+      statusCode: error.status ?? 500,
+      statusMessage: error.statusMessage ?? "Internal Server Error",
+      message: error.message ?? "Internal Server Error",
+    });
   }
 });
