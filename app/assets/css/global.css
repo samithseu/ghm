@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark-mode *));
+@custom-variant dark (&:is(.dark *));
 
 ::selection {
   @apply bg-primary/40 text-current;
@@ -10,10 +10,10 @@
 }
 :root {
   @apply scroll-width-thin;
-  &:is(.dark-mode) {
+  &:is(.dark) {
     color-scheme: dark;
   }
-  &:is(.light-mode) {
+  &:is(.light) {
     color-scheme: light;
   }
 }
@@ -30,7 +30,7 @@
 }
 
 .overflow-mask {
-  @apply [mask-image:linear-gradient(to_right,black_3rem,black_calc(100%_-_3rem),transparent)];
+  @apply mask-[linear-gradient(to_right,black_3rem,black_calc(100%-3rem),transparent)];
 }
 
 @theme inline {

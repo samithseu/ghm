@@ -20,4 +20,3 @@ Co-authored-by: [Name] <[GitHub-Email]>"
 
 - Built with [Nuxt 4](https://nuxt.com/)
 - Using [GitHub User REST API](https://api.github.com/users)
-- Deployed on [Vercel](https://vercel.com/)

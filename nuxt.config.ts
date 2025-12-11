@@ -7,13 +7,11 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  modules: [
-    "@nuxt/icon",
-    "@nuxt/fonts",
-    "nuxt-og-image",
-    "@nuxtjs/color-mode",
-  ],
-
+  modules: ["@nuxt/icon", "@nuxt/fonts", "nuxt-og-image", "@nuxtjs/color-mode"],
+  colorMode: {
+    preference: "system",
+    storageKey: "ghm-color-theme",
+  },
   runtimeConfig: {
     github: {
       token: "",
