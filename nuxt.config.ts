@@ -28,5 +28,6 @@ export default defineNuxtConfig({
   },
   icon: {
     serverBundle: "auto",
+    mode: "svg",
   },
 });
