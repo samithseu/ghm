@@ -10,9 +10,21 @@ useGHMSEO({
   description: `${data.value?.email}`,
 });
 
+const isCopied = ref<boolean>(false);
+
 const handleCopy = () => {
   if (data.value?.email) {
     navigator.clipboard.writeText(data.value.email);
+    isCopied.value = true;
+    // reset after 2 seconds
+    setTimeout(() => {
+      isCopied.value = false;
+    }, 2000);
+
+    // clean up on unmount
+    onUnmounted(() => {
+      isCopied.value = false;
+    });
   }
 };
 </script>
@@ -48,7 +60,7 @@ const handleCopy = () => {
       <span class="text-cyan-600 dark:text-primary">"{{ username }}"</span>
     </h1>
     <SimpleForm :placeholder="username?.toString()" />
-    <ClickToCopy />
+    <ClickToCopy :copy-state="isCopied" />
     <div class="flex gap-2 items-center">
       <!-- github profile image-->
       <NuxtLink

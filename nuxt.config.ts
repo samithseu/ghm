@@ -17,4 +17,16 @@ export default defineNuxtConfig({
       token: "",
     },
   },
+  experimental: {
+    viewTransition: true,
+  },
+  app: {
+    viewTransition: "always",
+  },
+  routeRules: {
+    "/": { prerender: true },
+  },
+  icon: {
+    serverBundle: "auto",
+  },
 });
