@@ -53,7 +53,10 @@ export default defineCachedEventHandler(
   {
     maxAge: 60 * 60, // 1 hour
     swr: true,
-    getKey: (event) =>
-      getRouterParam(event, "username", { decode: true }) ?? "",
+    getKey: (event) => {
+      const username =
+        getRouterParam(event, "username", { decode: true }) ?? "";
+      return Buffer.from(username).toString("base64");
+    },
   },
 );
