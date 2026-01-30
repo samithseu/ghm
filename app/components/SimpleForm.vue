@@ -7,7 +7,7 @@ const props = withDefaults(
   {
     placeholder: "Enter username...",
     autofocus: false,
-  }
+  },
 );
 
 const username = defineModel<string>("modelValue");
@@ -28,7 +28,7 @@ const username = defineModel<string>("modelValue");
       v-model="username"
     />
     <button
-      class="cursor-pointer transition-colors hover:bg-primary/20 dark:hover:bg-primary/10 hover:!border-primary/10 px-3 py-1.5 -ms-[1px]"
+      class="cursor-pointer transition-colors hover:bg-primary/20 dark:hover:bg-primary/10 hover:border-primary/10! px-3 py-1.5 -ms-px"
     >
       Search
     </button>

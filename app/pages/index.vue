@@ -10,6 +10,6 @@ useGHMSEO({
     <h1 class="text-wrap text-center text-xl font-bold">
       GitHub Email by username!
     </h1>
-    <SimpleForm autofocus />
+    <LazySimpleForm autofocus />
   </SimpleWrapper>
 </template>
