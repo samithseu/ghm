@@ -2,7 +2,7 @@
 
 ### ℹ️ What is this?
 
-I created this little site just to solve one problem which is finding the email address of a GitHub user by `username`.
+I created this little site just to solve one problem which is finding an email of a GitHub user by `username`.
 
 ⚡ Usage: It helps me find `co-author` email for mentioning in a commit message:
 
@@ -18,5 +18,5 @@ Co-authored-by: [Name] <[GitHub-Email]>"
 
 ### 📝 Others
 
-- Built with [Nuxt 4](https://nuxt.com/)
+- Built with [Nuxt](https://nuxt.com/)
 - Using [GitHub User REST API](https://api.github.com/users)

@@ -2,12 +2,12 @@
 const { username } = useRoute("username").params;
 
 const { data, pending, error } = await useLazyFetch(
-  () => `/api/mail/${username}`
+  () => `/api/mail/${username}`,
 );
 
 useGHMSEO({
   title: `${defaultSeo.title} - "${username}"`,
-  description: `${data.value?.email}`,
+  description: `${username}'s GitHub Email is '${data.value?.email}'`,
 });
 
 const isCopied = ref<boolean>(false);
