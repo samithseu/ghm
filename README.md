@@ -12,7 +12,7 @@ git commit -m "commit message...
 Co-authored-by: [Name] <[GitHub-Email]>"
 ```
 
-[👉 Check out here!](https://ghm.samith.info)
+[👉 Check out here!](https://ghm.samith.dev)
 
 ---
 

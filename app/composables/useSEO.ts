@@ -3,7 +3,7 @@ import type { ResolvableValue } from "@unhead/vue";
 export const defaultSeo = {
   desc: "GHM or GitHub-Mail, a place where you can get your GitHub-based email by username.",
   title: "GHM",
-  site: "ghm.samith.info",
+  site: "ghm.samith.dev",
 };
 
 interface EZSEOProps {
@@ -33,21 +33,21 @@ export const useGHMSEO = ({
       name: title,
       description,
       isPartOf: {
-        url: "samith.info",
+        url: "samith.dev",
         name: "Samith Seu",
       },
       author: {
-        "@id": "samith.info",
+        "@id": "samith.dev",
         "@type": "Person",
         name: "Samith Seu",
         sameAs: [
-          "https://samith.info",
+          "https://samith.dev",
           "https://github.com/samithseu",
           "https://linkedin.com/in/samith-seu/",
           "https://x.com/seumith",
           "https://t.me/samithseu",
         ],
-        url: "samith.info",
+        url: "samith.dev",
       },
       inLanguage: "en-US",
       keywords: [
