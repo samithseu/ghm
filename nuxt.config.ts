@@ -39,4 +39,7 @@ export default defineNuxtConfig({
     serverBundle: "auto",
     mode: "svg",
   },
+  $production: {
+    sourcemap: false,
+  },
 });
