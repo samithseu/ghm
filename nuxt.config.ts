@@ -46,9 +46,7 @@ export default defineNuxtConfig({
       },
     ],
   },
-  nitro: {
-    prerender: { routes: NAMES.map((usr) => `/api/mail/${usr}`) },
-  },
+  nitro: { prerender: { routes: NAMES.map((name) => `/${name}`) } },
   routeRules: { "/": { prerender: true } },
   icon: { serverBundle: "auto", mode: "svg" },
   $production: { sourcemap: false },
