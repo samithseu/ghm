@@ -30,7 +30,6 @@ export default defineNuxtConfig({
     viewTransition: "always",
   },
   sitemap: { zeroRuntime: true },
-  ogImage: { zeroRuntime: true },
   fonts: {
     families: [
       {

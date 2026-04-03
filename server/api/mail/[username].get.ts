@@ -22,6 +22,8 @@ export default defineCachedEventHandler(
       throw createError({ message: "username is required" });
 
     try {
+      const userAgent =
+        getRequestHeader(event, "User-Agent") || "My-Nuxt-App-Prerenderer";
       const res = await $fetch<GitHubUser>(
         `https://api.github.com/users/${encodeURIComponent(username)}`,
         {
@@ -29,7 +31,7 @@ export default defineCachedEventHandler(
             Authorization: `Bearer ${config.github.token}`,
             "X-GitHub-Api-Version": "2022-11-28",
             Accept: "application/vnd.github+json",
-            "User-Agent": getRequestHeader(event, "User-Agent") ?? "GHM",
+            "User-Agent": userAgent,
           },
         },
       );
