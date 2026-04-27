@@ -1,7 +1,8 @@
 export const SSG_USERNAMES = [
   "samithseu",
   "li-lay",
-  "ismevit",
+  "daradavit",
   "KLseak",
   "bandethvitou",
+  "its-jroch",
 ] as const;
