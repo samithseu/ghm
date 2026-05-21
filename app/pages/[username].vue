@@ -7,7 +7,8 @@ const { data, pending, error } = await useLazyFetch(
 
 useGHMSEO({
   title: `${defaultSeo.title} - "${username}"`,
-  description: `${username}'s GitHub Email is '${data.value?.email}'`,
+  email: data.value?.email ?? "",
+  description: `${username}'s GitHub Email is `,
 });
 
 const isCopied = ref<boolean>(false);

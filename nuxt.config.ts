@@ -23,31 +23,56 @@ export default defineNuxtConfig({
     "@nuxtjs/seo",
   ],
   colorMode: { preference: "system", storageKey: "ghm-color-theme" },
-  runtimeConfig: { github: { token: "" }, public: { siteUrl: "" } },
+  site: {
+    name: "GHM - GitHub Mail",
+    url: "https://ghm.samith.dev",
+  },
+  runtimeConfig: {
+    github: { token: "" },
+    public: {
+      site: {
+        name: "GHM - GitHub Mail",
+        url: "https://ghm.samith.dev",
+      },
+    },
+  },
   experimental: { viewTransition: true },
   app: {
     head: { titleTemplate: "%s" },
     viewTransition: "always",
   },
+  ogImage: { zeroRuntime: true },
   sitemap: { zeroRuntime: true },
   fonts: {
     families: [
       {
         name: "Inter",
         styles: ["normal"],
-        weights: [400, 700],
+        weights: [300, 400, 600, 700],
         subsets: ["latin"],
+        global: true,
       },
       {
         name: "Geist Mono",
         styles: ["normal"],
         weights: [400, 700],
         subsets: ["latin"],
+        global: true,
       },
     ],
   },
-  nitro: { prerender: { routes: NAMES.map((name) => `/${name}`) } },
+  nitro: {
+    preset: "vercel",
+    prerender: {
+      crawlLinks: true,
+      routes: [...NAMES.map((name) => `/${name}`), "/"],
+    },
+  },
   routeRules: { "/": { prerender: true } },
-  icon: { serverBundle: "auto", mode: "svg" },
+  icon: {
+    mode: "svg",
+    cssLayer: "base",
+    serverBundle: { collections: ["lucide", "lineicons"] },
+  },
   $production: { sourcemap: false },
 });

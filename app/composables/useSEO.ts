@@ -7,17 +7,17 @@ export const defaultSeo = {
 };
 
 interface EZSEOProps {
-  title: ResolvableValue<string | undefined>;
-  description: ResolvableValue<string | undefined>;
+  title: ResolvableValue<string>;
+  description?: ResolvableValue<string>;
+  email?: ResolvableValue<string>;
   ogImageHeadline?: string;
-  ogImageComponent?: string;
 }
 
 export const useGHMSEO = ({
   title,
   description,
+  email,
   ogImageHeadline = "GHM - GitHub Mail",
-  ogImageComponent = "EachPage",
 }: EZSEOProps) => {
   // schema.org structured data
   useSchemaOrg([
@@ -90,9 +90,15 @@ export const useGHMSEO = ({
   });
 
   // Render the Open Graph image component:
-  defineOgImageComponent(ogImageComponent, {
+  defineOgImage("EachPage.takumi", {
     headline: ogImageHeadline,
     title: title,
     desc: description,
+    email: email,
+  } as {
+    headline: string;
+    title: string;
+    email?: string;
+    desc?: string;
   });
 };
