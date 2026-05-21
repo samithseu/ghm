@@ -41,7 +41,6 @@ export default defineNuxtConfig({
     head: { titleTemplate: "%s" },
     viewTransition: "always",
   },
-  ogImage: { zeroRuntime: true },
   sitemap: { zeroRuntime: true },
   fonts: {
     families: [
