@@ -10,6 +10,7 @@ interface EZSEOProps {
   title: ResolvableValue<string>;
   description?: ResolvableValue<string>;
   email?: ResolvableValue<string>;
+  username?: ResolvableValue<string>;
   ogImageHeadline?: string;
 }
 
@@ -17,6 +18,7 @@ export const useGHMSEO = ({
   title,
   description,
   email,
+  username,
   ogImageHeadline = "GHM - GitHub Mail",
 }: EZSEOProps) => {
   // schema.org structured data
@@ -79,12 +81,12 @@ export const useGHMSEO = ({
   ]);
 
   useSeoMeta({
-    title: title,
+    title: title?.toString(),
     description,
     ogSiteName: defaultSeo.site,
-    ogTitle: title,
+    ogTitle: title?.toString(),
     ogDescription: description,
-    twitterTitle: title,
+    twitterTitle: title?.toString(),
     twitterSite: defaultSeo.site,
     twitterDescription: description,
   });
@@ -92,13 +94,15 @@ export const useGHMSEO = ({
   // Render the Open Graph image component:
   defineOgImage("EachPage.takumi", {
     headline: ogImageHeadline,
-    title: title,
+    title: title?.toString(),
     desc: description,
     email: email,
+    username: username,
   } as {
     headline: string;
     title: string;
     email?: string;
     desc?: string;
+    username?: string;
   });
 };

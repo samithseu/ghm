@@ -4,12 +4,13 @@ defineProps<{
   title: string;
   desc?: string;
   email?: string;
+  username?: string;
 }>();
 </script>
 
 <template>
   <div class="p-16 w-full h-full bg-zinc-950">
-    <div class="w-full h-full flex flex-col gap-10 relative justify-start">
+    <div class="w-full h-full flex flex-col gap-12 relative justify-start">
       <h3
         id="headline"
         class="uppercase font-bold font-mono text-3xl text-primary"
@@ -26,11 +27,15 @@ defineProps<{
         id="desc"
         class="text-4xl w-[80%] text-zinc-400 text-pretty leading-relaxed"
       >
-        <template v-if="desc">
-          <span>{{ desc }}</span>
-          <span v-if="email" class="text-nowrap text-primary font-mono">{{
+        <template v-if="username && email">
+          <span class="font-mono text-white">{{ username }}</span
+          ><span>'s GitHub Email is</span>
+          <span class="inline-block text-nowrap text-primary font-mono">{{
             email
           }}</span>
+        </template>
+        <template v-else>
+          <span>{{ desc }}</span>
         </template>
       </p>
 
