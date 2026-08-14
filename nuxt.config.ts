@@ -7,14 +7,8 @@ export default defineNuxtConfig({
   css: ["~/assets/css/global.css"],
   vite: {
     plugins: [tailwindcss()],
-    optimizeDeps: {
-      include: [
-        "@vue/devtools-core",
-        "@vue/devtools-kit",
-        "@unhead/schema-org/vue",
-      ],
-    },
   },
+
   modules: [
     "@nuxt/icon",
     "@nuxt/fonts",
@@ -72,6 +66,7 @@ export default defineNuxtConfig({
     mode: "svg",
     cssLayer: "base",
     serverBundle: { collections: ["lucide", "lineicons"] },
+    clientBundle: { scan: { globInclude: ["**/*.{vue,ts,js}"] } },
   },
   $production: { sourcemap: false },
 });
