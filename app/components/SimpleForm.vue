@@ -5,7 +5,7 @@ const props = withDefaults(
     autofocus?: boolean;
   }>(),
   {
-    placeholder: "Enter username...",
+    placeholder: "Enter GitHub username...",
     autofocus: false,
   },
 );

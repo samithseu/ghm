@@ -4,21 +4,15 @@
   >
     <NuxtPage />
     <footer
-      class="text-gray-500 dark:text-white/40 absolute bottom-0 left-0 py-2 w-full flex justify-center items-center *:hover:text-black *:dark:hover:text-white *:hover:underline *:text-sm"
+      class="text-gray-500 dark:text-white/40 absolute bottom-0 left-0 py-2 w-full flex justify-center items-center *:hover:text-black *:dark:hover:text-white *:hover:underline *:text-sm *:flex *:items-center *:gap-1"
     >
-      <NuxtLink title="source code" to="https://github.com/samithseu/ghm/"
-        >source
-      </NuxtLink>
-      &nbsp;&middot;&nbsp;
       <NuxtLink
-        class="flex items-center gap-1"
-        title="Nuxt.js"
-        to="https://nuxt.com"
-        >made with <Icon size="18" name="lineicons:nuxt" />
-      </NuxtLink>
-      &nbsp;&middot;&nbsp;
-      <NuxtLink title="@samithseu" to="https://github.com/samithseu">
-        by @samithseu
+        target="_blank"
+        title="Source (GitHub)"
+        to="https://github.com/samithseu/ghm/"
+      >
+        <Icon size="18" name="lineicons:code-1" />
+        source
       </NuxtLink>
     </footer>
   </div>

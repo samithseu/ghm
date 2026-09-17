@@ -57,8 +57,8 @@ onUnmounted(() => {
     </h1>
     <SimpleForm :placeholder="username" />
     <SimpleAutoScrollText classes="border border-red-500 cursor-not-allowed"
-      >{{ error?.statusCode }} -
-      {{ error?.statusMessage ?? error?.message }}</SimpleAutoScrollText
+      >{{ error?.status }} -
+      {{ error?.statusText ?? error?.message }}</SimpleAutoScrollText
     >
   </SimpleWrapper>
 
