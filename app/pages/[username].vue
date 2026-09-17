@@ -1,34 +1,41 @@
 <script lang="ts" setup>
-const { username } = useRoute("username").params;
+const route = useRoute();
+const username = computed(() => (route.params.username as string) || "");
 
-const { data, pending, error } = await useLazyFetch(
-  () => `/api/mail/${username}`,
+const { data, pending, error } = useLazyFetch(
+  () => `/api/mail/${username.value}`,
+  {
+    key: `mail-${username.value}`,
+  },
 );
 
 useGHMSEO({
-  title: `${defaultSeo.title} - ${username}`,
-  email: data.value?.email ?? "",
-  description: `${username}'s GitHub Email is ${data.value?.email ?? "not available!"}`,
-  username: username?.toString() ?? "",
+  title: computed(() => `${defaultSeo.title} - ${username.value}`),
+  email: computed(() => data.value?.email ?? ""),
+  description: computed(
+    () =>
+      `${username.value}'s GitHub Email is ${data.value?.email ?? "not available!"}`,
+  ),
+  username: computed(() => username.value),
 });
 
 const isCopied = ref<boolean>(false);
+let copyTimeout: ReturnType<typeof setTimeout> | null = null;
 
 const handleCopy = () => {
   if (data.value?.email) {
     navigator.clipboard.writeText(data.value.email);
     isCopied.value = true;
-    // reset after 2 seconds
-    setTimeout(() => {
+    if (copyTimeout) clearTimeout(copyTimeout);
+    copyTimeout = setTimeout(() => {
       isCopied.value = false;
     }, 2000);
-
-    // clean up on unmount
-    onUnmounted(() => {
-      isCopied.value = false;
-    });
   }
 };
+
+onUnmounted(() => {
+  if (copyTimeout) clearTimeout(copyTimeout);
+});
 </script>
 
 <template>
@@ -48,7 +55,7 @@ const handleCopy = () => {
     <h1 class="text-wrap text-center text-xl font-bold">
       GitHub Mail for "{{ username }}"
     </h1>
-    <SimpleForm :placeholder="username?.toString()" />
+    <SimpleForm :placeholder="username" />
     <SimpleAutoScrollText classes="border border-red-500 cursor-not-allowed"
       >{{ error?.statusCode }} -
       {{ error?.statusMessage ?? error?.message }}</SimpleAutoScrollText
@@ -61,7 +68,7 @@ const handleCopy = () => {
       GitHub Mail for
       <span class="text-cyan-600 dark:text-primary">"{{ username }}"</span>
     </h1>
-    <SimpleForm :placeholder="username?.toString()" />
+    <SimpleForm :placeholder="username" />
     <ClickToCopy :copy-state="isCopied" />
     <div class="flex gap-2 items-center">
       <!-- github profile image-->
@@ -74,6 +81,10 @@ const handleCopy = () => {
         <img
           :src="data?.avatar_url"
           :alt="`&quot;${data?.username}&quot; GitHub`"
+          width="36"
+          height="36"
+          loading="lazy"
+          decoding="async"
           class="aspect-square min-w-9 max-w-9 rounded-full"
         />
       </NuxtLink>

@@ -12,7 +12,6 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/icon",
     "@nuxt/fonts",
-    "nuxt-og-image",
     "@nuxtjs/color-mode",
     "@nuxtjs/seo",
   ],
@@ -41,7 +40,7 @@ export default defineNuxtConfig({
       {
         name: "Inter",
         styles: ["normal"],
-        weights: [300, 400, 600, 700],
+        weights: [400, 700],
         subsets: ["latin"],
         global: true,
       },
@@ -56,16 +55,28 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: "vercel",
+    future: {
+      nativeSWR: true,
+    },
     prerender: {
       crawlLinks: true,
       routes: [...NAMES.map((name) => `/${name}`), "/"],
     },
   },
-  routeRules: { "/": { prerender: true } },
+  routeRules: {
+    "/api/mail/**": {
+      swr: 3600,
+      cache: {
+        maxAge: 3600,
+        swr: true,
+        staleMaxAge: 86400,
+      },
+    },
+  },
   icon: {
     mode: "svg",
     cssLayer: "base",
-    serverBundle: { collections: ["lucide", "lineicons"] },
+    serverBundle: false,
     clientBundle: { scan: { globInclude: ["**/*.{vue,ts,js}"] } },
   },
   $production: { sourcemap: false },

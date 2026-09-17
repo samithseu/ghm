@@ -80,29 +80,28 @@ export const useGHMSEO = ({
     }),
   ]);
 
+  const resolvedTitle = computed(() => toValue(title) ?? defaultSeo.title);
+  const resolvedDesc = computed(() => toValue(description) ?? defaultSeo.desc);
+  const resolvedEmail = computed(() => toValue(email) ?? "");
+  const resolvedUsername = computed(() => toValue(username) ?? "");
+
   useSeoMeta({
-    title: title?.toString(),
-    description,
+    title: () => resolvedTitle.value,
+    description: () => resolvedDesc.value,
     ogSiteName: defaultSeo.site,
-    ogTitle: title?.toString(),
-    ogDescription: description,
-    twitterTitle: title?.toString(),
+    ogTitle: () => resolvedTitle.value,
+    ogDescription: () => resolvedDesc.value,
+    twitterTitle: () => resolvedTitle.value,
     twitterSite: defaultSeo.site,
-    twitterDescription: description,
+    twitterDescription: () => resolvedDesc.value,
   });
 
   // Render the Open Graph image component:
   defineOgImage("EachPage.takumi", {
     headline: ogImageHeadline,
-    title: title?.toString(),
-    desc: description,
-    email: email,
-    username: username,
-  } as {
-    headline: string;
-    title: string;
-    email?: string;
-    desc?: string;
-    username?: string;
+    title: resolvedTitle.value,
+    desc: resolvedDesc.value,
+    email: resolvedEmail.value,
+    username: resolvedUsername.value,
   });
 };
