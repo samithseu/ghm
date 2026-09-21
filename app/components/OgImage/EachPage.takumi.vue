@@ -25,12 +25,12 @@ defineProps<{
       </h4>
       <p
         id="desc"
-        class="text-4xl w-[80%] text-zinc-400 text-pretty leading-relaxed"
+        class="text-4xl w-full max-w-[95%] text-zinc-400 text-pretty leading-relaxed"
       >
         <template v-if="username && email">
           <span class="font-mono text-white">{{ username }}</span
-          ><span>'s GitHub Email is</span>
-          <span class="inline-block text-nowrap text-primary font-mono">{{
+          ><span>'s GitHub Email is </span>
+          <span class="inline-block text-primary font-mono break-all">{{
             email
           }}</span>
         </template>

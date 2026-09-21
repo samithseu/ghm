@@ -2,10 +2,11 @@
 const route = useRoute();
 const username = computed(() => (route.params.username as string) || "");
 
-const { data, pending, error } = useLazyFetch(
+const { data, pending, error } = await useFetch(
   () => `/api/mail/${username.value}`,
   {
-    key: `mail-${username.value}`,
+    key: computed(() => `mail-${username.value}`),
+    lazy: import.meta.client,
   },
 );
 

@@ -99,9 +99,23 @@ export const useGHMSEO = ({
   // Render the Open Graph image component:
   defineOgImage("EachPage.takumi", {
     headline: ogImageHeadline,
-    title: resolvedTitle.value,
-    desc: resolvedDesc.value,
-    email: resolvedEmail.value,
-    username: resolvedUsername.value,
+    title: resolvedTitle,
+    desc: resolvedDesc,
+    email: resolvedEmail,
+    username: resolvedUsername,
   });
+
+  if (import.meta.client) {
+    watch(resolvedEmail, (newEmail) => {
+      if (newEmail) {
+        defineOgImage("EachPage.takumi", {
+          headline: ogImageHeadline,
+          title: resolvedTitle,
+          desc: resolvedDesc,
+          email: resolvedEmail,
+          username: resolvedUsername,
+        });
+      }
+    });
+  }
 };
