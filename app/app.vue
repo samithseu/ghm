@@ -1,4 +1,5 @@
 <template>
+  <NuxtPwaManifest />
   <div
     class="bg-white dark:bg-dark w-full min-h-dvh flex flex-col justify-center items-center px-4 sm:px-0 relative"
   >

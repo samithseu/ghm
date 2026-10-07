@@ -14,7 +14,83 @@ export default defineNuxtConfig({
     "@nuxt/fonts",
     "@nuxtjs/color-mode",
     "@nuxtjs/seo",
+    "@vite-pwa/nuxt",
   ],
+  pwa: {
+    registerType: "autoUpdate",
+    manifest: {
+      name: "GHM - GitHub Mail",
+      short_name: "GHM",
+      description: "Find GitHub-based noreply email by username.",
+      theme_color: "#0a0a0a",
+      background_color: "#ffffff",
+      display: "standalone",
+      orientation: "portrait",
+      scope: "/",
+      start_url: "/",
+      icons: [
+        {
+          src: "/pwa-192x192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "/pwa-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+        {
+          src: "/pwa-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+          purpose: "any",
+        },
+        {
+          src: "/pwa-maskable-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+          purpose: "maskable",
+        },
+      ],
+    },
+    workbox: {
+      navigateFallback: "/",
+      globPatterns: ["**/*.{js,css,html,png,svg,ico,woff,woff2}"],
+      runtimeCaching: [
+        {
+          urlPattern: /^https:\/\/avatars\.githubusercontent\.com\/.*/i,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "github-avatars-cache",
+            expiration: {
+              maxEntries: 100,
+              maxAgeSeconds: 60 * 60 * 24 * 7,
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
+        {
+          urlPattern: /^\/api\/mail\/.*/i,
+          handler: "StaleWhileRevalidate",
+          options: {
+            cacheName: "ghm-api-cache",
+            expiration: {
+              maxEntries: 50,
+              maxAgeSeconds: 60 * 60 * 24,
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
+      ],
+    },
+    devOptions: {
+      enabled: false,
+    },
+  },
   colorMode: { preference: "system", storageKey: "ghm-color-theme" },
   site: {
     name: "GHM - GitHub Mail",
@@ -31,7 +107,13 @@ export default defineNuxtConfig({
   },
   experimental: { viewTransition: true },
   app: {
-    head: { titleTemplate: "%s" },
+    head: {
+      titleTemplate: "%s",
+      link: [
+        { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      ],
+    },
     viewTransition: "always",
   },
   sitemap: { zeroRuntime: true },
