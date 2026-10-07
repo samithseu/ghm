@@ -1,5 +1,4 @@
 import type { H3Event } from "h3";
-import type { FetchError } from "ofetch";
 
 interface GitHubUser {
   login: string;
